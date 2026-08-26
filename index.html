@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Brew & Bean — a premium 3D animated coffee shop ordering experience.">
+  <title>Brew & Bean — Coffee, Crafted Your Way</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="site-noise" aria-hidden="true"></div>
+  <header class="nav">
+    <a class="brand" href="#home" aria-label="Brew and Bean home">
+      <span class="brand-mark">☕</span>
+      <span><b>BREW</b><small>& BEAN</small></span>
+    </a>
+    <nav class="nav-links" aria-label="Main navigation">
+      <a href="#menu">Menu</a>
+      <a href="#craft">Our Craft</a>
+      <a href="#story">Story</a>
+    </nav>
+    <button class="cart-btn" id="openCart" type="button" aria-label="Open shopping cart">
+      <span>Order</span><i id="cartCount">0</i>
+    </button>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="hero-copy reveal">
+        <p class="eyebrow">SMALL BATCH • BIG FLAVOUR</p>
+        <h1>Good coffee.<br><em>Better moments.</em></h1>
+        <p class="hero-text">Roasted with intention, poured with personality. Build your perfect cup and make it yours.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#menu">Explore the menu <span>↗</span></a>
+          <a class="text-link" href="#craft">How we brew <span>↓</span></a>
+        </div>
+      </div>
+
+      <div class="hero-visual" aria-label="Animated coffee cup illustration">
+        <div class="orb orb-one"></div>
+        <div class="orb orb-two"></div>
+        <div class="coffee-stage">
+          <div class="steam steam-a"></div><div class="steam steam-b"></div><div class="steam steam-c"></div>
+          <div class="cup-shadow"></div>
+          <div class="cup">
+            <div class="cup-lid"></div>
+            <div class="cup-body">
+              <span class="cup-logo">B&B</span>
+              <span class="cup-line"></span>
+            </div>
+            <div class="cup-handle"></div>
+          </div>
+          <div class="bean bean-a"></div><div class="bean bean-b"></div><div class="bean bean-c"></div>
+        </div>
+        <div class="floating-note note-one"><b>100%</b><span>Arabica beans</span></div>
+        <div class="floating-note note-two"><b>4.9</b><span>★★★★★</span></div>
+      </div>
+
+      <div class="scroll-cue"><span></span> Scroll to discover</div>
+    </section>
+
+    <section class="ticker" aria-label="Highlights">
+      <div>FRESHLY ROASTED <span>✦</span> CRAFTED DAILY <span>✦</span> GOOD VIBES ONLY <span>✦</span> FRESHLY ROASTED <span>✦</span> CRAFTED DAILY <span>✦</span></div>
+    </section>
+
+    <section class="section menu-section" id="menu">
+      <div class="section-heading reveal">
+        <div><p class="eyebrow">THE MENU</p><h2>Find your <em>favourite.</em></h2></div>
+        <p>Classic comfort or something unexpected — every drink starts with seriously good coffee.</p>
+      </div>
+
+      <div class="category-tabs" role="tablist" aria-label="Menu categories">
+        <button class="active" data-category="all" type="button">All</button>
+        <button data-category="coffee" type="button">Coffee</button>
+        <button data-category="cold" type="button">Cold</button>
+        <button data-category="noncoffee" type="button">Non-Coffee</button>
+        <button data-category="bites" type="button">Bites</button>
+      </div>
+
+      <div class="menu-grid" id="menuGrid"></div>
+    </section>
+
+    <section class="craft-section" id="craft">
+      <div class="craft-image">
+        <div class="big-number">01</div>
+        <div class="pour-cup">
+          <div class="pour-steam"></div>
+          <div class="pour-liquid"></div>
+          <div class="pour-body"><span>B&B</span></div>
+        </div>
+      </div>
+      <div class="craft-copy reveal">
+        <p class="eyebrow">OUR CRAFT</p>
+        <h2>From bean<br>to <em>beautiful.</em></h2>
+        <p>We work with seasonal Arabica beans, roast in small batches, and dial in every recipe for a balanced cup. Nothing rushed. Nothing ordinary.</p>
+        <div class="craft-stats">
+          <div><strong>48h</strong><span>Roast to cup</span></div>
+          <div><strong>92°C</strong><span>Brew sweet spot</span></div>
+          <div><strong>100%</strong><span>Arabica</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="builder-section" id="builder">
+      <div class="builder-intro reveal">
+        <p class="eyebrow">MAKE IT YOURS</p>
+        <h2>Build your<br><em>perfect cup.</em></h2>
+        <p>Pick your base, customise the details, and we'll make it exactly how you like it.</p>
+      </div>
+      <form class="builder-card" id="builderForm">
+        <div class="builder-preview">
+          <div class="mini-cup">
+            <div class="mini-steam"></div>
+            <div class="mini-liquid" id="previewLiquid"></div>
+            <div class="mini-body"><span>B&B</span></div>
+          </div>
+          <div>
+            <span class="preview-label">YOUR CREATION</span>
+            <h3 id="previewName">Signature Latte</h3>
+            <strong id="previewPrice">₹240</strong>
+          </div>
+        </div>
+
+        <div class="option-group">
+          <label>1. Choose your coffee</label>
+          <div class="choice-grid" id="baseChoices">
+            <button class="choice selected" data-value="Signature Latte" data-price="240" type="button"><b>Signature Latte</b><small>Silky & balanced</small></button>
+            <button class="choice" data-value="Cappuccino" data-price="230" type="button"><b>Cappuccino</b><small>Bold & foamy</small></button>
+            <button class="choice" data-value="Mocha Cloud" data-price="260" type="button"><b>Mocha Cloud</b><small>Cocoa & espresso</small></button>
+            <button class="choice" data-value="Cold Brew" data-price="250" type="button"><b>Cold Brew</b><small>Slow & smooth</small></button>
+          </div>
+        </div>
+
+        <div class="option-group">
+          <label>2. Size</label>
+          <div class="pill-row" id="sizeChoices">
+            <button class="pill selected" data-value="Regular" data-add="0" type="button">Regular</button>
+            <button class="pill" data-value="Large" data-add="40" type="button">Large <small>+₹40</small></button>
+            <button class="pill" data-value="XL" data-add="70" type="button">XL <small>+₹70</small></button>
+          </div>
+        </div>
+
+        <div class="option-group">
+          <label>3. Milk</label>
+          <div class="select-wrap"><select id="milk"><option value="Whole Milk|0">Whole Milk</option><option value="Oat Milk|45">Oat Milk +₹45</option><option value="Almond Milk|40">Almond Milk +₹40</option><option value="Coconut Milk|35">Coconut Milk +₹35</option></select></div>
+        </div>
+
+        <div class="option-group">
+          <label>4. Sweetness</label>
+          <div class="pill-row" id="sweetChoices">
+            <button class="pill selected" data-value="No extra" type="button">No extra</button>
+            <button class="pill" data-value="Light" type="button">Light</button>
+            <button class="pill" data-value="Regular" type="button">Regular</button>
+            <button class="pill" data-value="Extra" type="button">Extra</button>
+          </div>
+        </div>
+
+        <div class="option-group">
+          <label>5. Extras</label>
+          <div class="extra-list">
+            <label class="check-row"><span><input type="checkbox" data-name="Vanilla" data-price="25"> Vanilla syrup</span><b>+₹25</b></label>
+            <label class="check-row"><span><input type="checkbox" data-name="Caramel" data-price="30"> Caramel drizzle</span><b>+₹30</b></label>
+            <label class="check-row"><span><input type="checkbox" data-name="Espresso Shot" data-price="45"> Extra espresso shot</span><b>+₹45</b></label>
+            <label class="check-row"><span><input type="checkbox" data-name="Whipped Cream" data-price="35"> Whipped cream</span><b>+₹35</b></label>
+          </div>
+        </div>
+
+        <button class="btn btn-primary add-custom" type="submit">Add custom cup <span>＋</span></button>
+      </form>
+    </section>
+
+    <section class="story-section" id="story">
+      <div class="story-card reveal">
+        <p class="eyebrow">THE BREW & BEAN STORY</p>
+        <h2>A neighbourhood café<br>with <em>big energy.</em></h2>
+        <p>Good beans brought us together. Good people keep us here. Come for the coffee, stay for the conversations.</p>
+        <a class="btn btn-light" href="#menu">Grab a cup <span>→</span></a>
+      </div>
+      <div class="story-orbit">
+        <div class="orbit-ring"></div>
+        <div class="orbit-bean">☕</div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-brand"><span class="brand-mark">☕</span><b>BREW & BEAN</b></div>
+    <p>Made for slow mornings & fast ideas.</p>
+    <span>© 2026 Brew & Bean</span>
+  </footer>
+
+  <aside class="cart-drawer" id="cartDrawer" aria-label="Shopping cart" aria-hidden="true">
+    <div class="cart-head"><div><p class="eyebrow">YOUR ORDER</p><h2>Cart <span id="cartItemsLabel">(0)</span></h2></div><button class="close-btn" id="closeCart" type="button">×</button></div>
+    <div class="cart-items" id="cartItems"><div class="empty-cart"><span>☕</span><h3>Your cart is empty</h3><p>Add something delicious to get started.</p></div></div>
+    <div class="cart-bottom">
+      <div class="total-row"><span>Subtotal</span><strong id="cartTotal">₹0</strong></div>
+      <button class="btn btn-primary checkout-btn" id="checkoutBtn" type="button">Place order <span>→</span></button>
+    </div>
+  </aside>
+  <div class="drawer-backdrop" id="drawerBackdrop"></div>
+
+  <div class="modal" id="checkoutModal" aria-hidden="true">
+    <div class="modal-card">
+      <button class="close-btn modal-close" id="closeModal" type="button">×</button>
+      <p class="eyebrow">CHECKOUT</p>
+      <h2>Ready for<br><em>good coffee?</em></h2>
+      <form id="checkoutForm">
+        <label>Name<input id="customerName" required placeholder="Your name"></label>
+        <label>Phone<input id="customerPhone" required inputmode="tel" placeholder="+91 98765 43210"></label>
+        <label>Order type<select id="orderType"><option>Pickup</option><option>Table service</option></select></label>
+        <label>Special note<textarea id="orderNote" rows="3" placeholder="Extra details (optional)"></textarea></label>
+        <button class="btn btn-primary" type="submit">Confirm order <span>✓</span></button>
+      </form>
+    </div>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="script.js"></script>
+</body>
+</html>
